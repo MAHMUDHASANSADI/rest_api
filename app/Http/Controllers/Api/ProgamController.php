@@ -29,6 +29,14 @@ class ProgamController extends Controller
             'description'=>'required',
         ]);
 
+        if($validator->fails()){
+            return response()->json([
+                'message' => 'validation error',
+                'errors' => $validator->errors(),
+
+            ],422);
+        }
+
         $program = Progam::create([
             'name'=>$request->name,
             'description'=>$request->description,
@@ -39,5 +47,9 @@ class ProgamController extends Controller
             'data'=> new ProgramResource($program)
         ],200);
         
+    }
+
+    public function show(Progam $program){
+        return new ProgramResource($program);        
     }
 }
