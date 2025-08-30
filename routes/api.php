@@ -2,9 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\ProgamController;
+use App\Http\Controllers\Api\ProgramController;
 
-Route::apiResource('/programs',ProgamController::class);
+Route::apiResource('/programs',ProgramController::class);
 
 Route::get('/user', function (Request $request) {
     return $request->user();
